@@ -3,6 +3,7 @@ import json
 import joblib
 import pandas as pd
 import streamlit as st
+import urllib.request
 
 MODEL_PATH = Path("models/flight_delay_model.joblib")
 METRICS_PATH = Path("models/metrics.json")
@@ -13,8 +14,14 @@ st.write("Enter the available flight details to estimate whether the flight may 
 st.caption("This is an academic prototype. Predictions are estimates, not official airline information.")
 
 if not MODEL_PATH.exists():
-    st.error("Trained model not found. First run `python train.py` in the VS Code terminal.")
-    st.stop()
+    MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+    MODEL_URL = "https://github.com/satwikhiremath/flight-delay-prediction/releases/download/v1.0.0/flight_delay_model.joblib"
+    try:
+        with st.spinner("Downloading the trained model..."):
+            urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
+    except Exception as e:
+        st.error(f"Could not download the trained model: {e}")
+        st.stop()
 
 bundle = joblib.load(MODEL_PATH)
 pipeline = bundle["pipeline"]
