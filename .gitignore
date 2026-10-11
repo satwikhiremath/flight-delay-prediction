@@ -1,0 +1,10 @@
+.venv/
+venv/
+data/
+*.csv
+__pycache__/
+*.pyc
+*.tmp
+*.log
+.env
+models/*.joblib

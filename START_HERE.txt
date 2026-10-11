@@ -1,0 +1,19 @@
+START HERE — PLEASE FOLLOW IN ORDER
+
+1. Extract this ZIP file.
+2. Open VS Code.
+3. Click File > Open Folder.
+4. Select the extracted folder named Flight_Delay_Prediction_Project.
+5. Put your Kaggle CSV file inside the project's data folder.
+6. In VS Code, click Terminal > New Terminal.
+7. Type: python -m pip install -r requirements.txt
+   Press Enter and wait.
+8. Type: python inspect_data.py
+   Press Enter. Check whether the CSV is found.
+9. Type: python train.py
+   Press Enter and wait for training to finish. It may take some time.
+10. Type: python -m streamlit run app.py
+    Press Enter. A browser tab should open with the dashboard.
+
+If any command gives an error, take a screenshot of the whole terminal and ask for help.
+Do not paste the ``` marks you may see around code into Python files.
